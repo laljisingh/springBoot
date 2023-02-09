@@ -1,4 +1,4 @@
-# Getting Started
+# User Management System
 
 ### Reference Documentation
 For further reference, please consider the following sections:
@@ -14,4 +14,17 @@ The following guides illustrate how to use some features concretely:
 * [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
 * [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
 * [Building REST services with Spring](https://spring.io/guides/tutorials/rest/)
+
+## All Modules
+
+### Get All User
+*1 ![Logo](https://github.com/laljisingh/springBoot/blob/main/user_management_system/getAllUser.png)
+### Get User By Id
+*2 ![Logo](https://github.com/laljisingh/springBoot/blob/main/user_management_system/getUserById.png) 
+### Get Add User
+*3 ![Logo](https://github.com/laljisingh/springBoot/blob/main/user_management_system/addUser.png)
+### Get update User
+*4 ![Logo](https://github.com/laljisingh/springBoot/blob/main/user_management_system/updateUser.png)
+### Get delet User
+*5 ![Logo](https://github.com/laljisingh/springBoot/blob/main/user_management_system/deleteUser.png)
 
