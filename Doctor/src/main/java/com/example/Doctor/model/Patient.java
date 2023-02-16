@@ -22,7 +22,7 @@ public class Patient {
     private String admitDate;
 
     @JoinColumn(name="doctor_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Doctor doctorId;
 
     public Patient() {

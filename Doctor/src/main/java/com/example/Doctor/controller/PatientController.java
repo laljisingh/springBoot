@@ -6,8 +6,11 @@ import com.example.Doctor.model.Doctor;
 import com.example.Doctor.model.Patient;
 import com.example.Doctor.service.PatientService;
 import io.micrometer.common.lang.Nullable;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.SimpleDateFormat;
@@ -92,6 +95,23 @@ public class PatientController {
             }
 
         return patientL;
+    }
+
+    @GetMapping(value = "/patient-list")
+    public ResponseEntity getPatient(@Nullable @RequestParam String doctorId,
+                                      @Nullable @RequestParam String patientId) {
+
+        JSONArray patientDetails = service.getPatients();
+
+        return new ResponseEntity<>(patientDetails.toString(), HttpStatus.OK);
+
+        //both null- all patients
+        //doctorId null- get by patient Id
+        //patientId null- get all patients been treated by doctorId
+
+        //ToDO: get all patients, Get a single patient by patient id, Get all patient who are been treated by doctorId
+
+
     }
 
 }
