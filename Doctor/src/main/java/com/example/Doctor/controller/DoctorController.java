@@ -2,8 +2,6 @@ package com.example.Doctor.controller;
 
 import com.example.Doctor.model.Doctor;
 import com.example.Doctor.service.DoctorService;
-import com.fasterxml.jackson.annotation.JsonAlias;
-import com.fasterxml.jackson.databind.util.JSONPObject;
 import jakarta.annotation.Nullable;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,7 +74,7 @@ public class DoctorController {
 
         if(json.has("experience")) {
             String exp = json.getString("experience");
-            doctor.setExperience("experience");
+            doctor.setExperience(exp);
         }
 
         return doctor;
