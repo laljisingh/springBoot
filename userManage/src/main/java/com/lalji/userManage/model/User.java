@@ -10,11 +10,13 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
 
 @AllArgsConstructor
 @Data
+@NoArgsConstructor
 @Entity
 @Table(name = "User_table")
 public class User {
@@ -29,7 +31,7 @@ public class User {
     private String username;
 
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+
     @NotNull(message = "Please provide a date of birth format yyyy-MM-dd.")
     private String dateOfBirth;
 
@@ -52,7 +54,5 @@ public class User {
     @Column(name = "time")
     private String time;
 
-    public User() {
 
-    }
 }
