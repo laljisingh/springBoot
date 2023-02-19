@@ -15,7 +15,7 @@ public class Doctor {
 
         @Id
         @Column(name = "doctor_id")
-        private Integer doctorId;
+        private Integer ;
 
         @Column(name = "doctor_name")
         private String doctorName;

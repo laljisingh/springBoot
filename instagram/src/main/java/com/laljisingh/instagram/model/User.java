@@ -14,10 +14,10 @@ import org.hibernate.annotations.CollectionIdMutability;
 public class User {
     @Id//primary key
     @Column(name = "user_id") // to create column name
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // To auto generate primary key
+    @GeneratedValue(strategy = GenerationType.AUTO) // To auto generate primary key
     private int userId;
 
-    @Column(name = "first_name", columnDefinition = "varchar(255) default 'John Snow'")
+    @Column(name = "first_name")
     private String firstName;
 
     @Column(name = "last_name")
