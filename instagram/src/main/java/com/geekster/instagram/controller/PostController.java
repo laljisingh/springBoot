@@ -5,7 +5,6 @@ import com.geekster.instagram.dao.UserRepository;
 import com.geekster.instagram.model.Post;
 import com.geekster.instagram.model.User;
 import com.geekster.instagram.service.PostService;
-import com.geekster.instagram.service.UserService;
 import jakarta.annotation.Nullable;
 import org.json.JSONArray;
 import org.json.JSONObject;

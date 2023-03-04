@@ -18,16 +18,12 @@ public class counterController {
     countService count;
 
 
-
-
     @GetMapping("/count")
     public int count(){
         count.setCount();
 
         return count.getCount();
     }
-
-
 
     @GetMapping("/counts/{name}")
     public HashMap<String,Integer> counts(@PathVariable String name){

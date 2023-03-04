@@ -1,7 +1,5 @@
 package com.example.Doctor.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -15,7 +13,7 @@ public class Doctor {
 
         @Id
         @Column(name = "doctor_id")
-        private Integer ;
+        private Integer doctorId;
 
         @Column(name = "doctor_name")
         private String doctorName;
