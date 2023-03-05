@@ -2,10 +2,7 @@ package com.laljisingh.chatapplicatio.controller;
 
 import com.laljisingh.chatapplicatio.model.Status;
 import com.laljisingh.chatapplicatio.model.Users;
-import com.laljisingh.chatapplicatio.repository.StatusRepository;
 import com.laljisingh.chatapplicatio.repository.UserRepository;
-import com.laljisingh.chatapplicatio.service.UserService;
-import com.laljisingh.chatapplicatio.util.CommonUtils;
 import jakarta.annotation.Nullable;
 import org.json.JSONArray;
 import org.json.JSONObject;
