@@ -18,7 +18,7 @@ public class Student {
 
     @Id
     @Column(name = "student_id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer Student_Id;
     @Column(name = "first_name")
     private String firstName;

@@ -6,6 +6,7 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,6 +30,34 @@ public class StudentService {
 
     public void deleteStudent(Integer valueOf) {
         studentRepository.deleteById(valueOf);
+    }
+
+
+    public JSONObject updateStudent(Student updatedStudent, String id) {
+        List<Student> studentList = studentRepository.getStudentByStudent_Id(Integer.valueOf(id));
+        JSONObject obj = new JSONObject();
+        if(!studentList.isEmpty()) {
+            Student oldUser = studentList.get(0);
+            updatedStudent.setStudent_Id(oldUser.getStudent_Id());
+            updatedStudent.setAdmissionDate(oldUser.getAdmissionDate());
+            studentRepository.save(updatedStudent);
+        } else {
+            obj.put("errorMessage" , "User doesn't exist");
+        }
+        return obj;
+    }
+
+    public List<Student> getDistinctStudent(String firstName) {
+        List<Student> distinctStudent = studentRepository.findDistinctByfirstName(firstName);
+        return distinctStudent;
+    }
+
+    public List<Student> getByFirstNameAndLastName(String firstName, String lastname) {
+       return studentRepository.findByfirstNameAndLastName(firstName,lastname);
+    }
+
+    public List<Student> getByFirstNameOrLastName(String firstName, String lastname) {
+        return studentRepository.findByfirstNameOrLastName(firstName,lastname);
     }
 
 

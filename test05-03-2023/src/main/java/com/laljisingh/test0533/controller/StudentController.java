@@ -1,10 +1,7 @@
 package com.laljisingh.test0533.controller;
 
-import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.laljisingh.test0533.model.Student;
-import com.laljisingh.test0533.repository.StudentRepository;
 import com.laljisingh.test0533.service.StudentService;
-import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -47,6 +44,38 @@ public class StudentController {
         return new ResponseEntity<>("Deleted", HttpStatus.ACCEPTED);
     }
 
+    @PutMapping("/update/{id}")
+    public ResponseEntity<String> updateStudent(@RequestBody String updatedStudent, @PathVariable String id){
+        JSONObject json = new JSONObject(updatedStudent);
+        JSONObject error = validateStudent(json);
+        if (error.isEmpty()){
+            Student student=setStudent(json);
+            JSONObject responseObj = studentService.updateStudent(student, id);
+            if(responseObj.has("errorMessage")) {
+                return new ResponseEntity<String>(responseObj.toString(), HttpStatus.BAD_REQUEST);
+            }
+        }else {
+            return new ResponseEntity<String>(error.toString(), HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity("user updated", HttpStatus.OK);
+    }
+
+    @GetMapping("/get-distinct-student/{firstName}")
+    public ResponseEntity<String> getDistinctStudent(@PathVariable String firstName){
+        List<Student> list =  studentService.getDistinctStudent(firstName);
+        return new ResponseEntity<>(list.toString(),HttpStatus.ACCEPTED);
+    }
+    @GetMapping("/get-and-student/{firstName}/{lastname}")
+    public ResponseEntity<String> getByFirstNameAndLastName(@PathVariable String firstName,@PathVariable String lastname){
+        List<Student> list =  studentService.getByFirstNameAndLastName(firstName,lastname);
+        return new ResponseEntity<>(list.toString(),HttpStatus.ACCEPTED);
+    }
+
+    @GetMapping("/get-or-student/{firstName}/{lastname}")
+    public ResponseEntity<String> getByFirstNameOrLastName(@PathVariable String firstName,@PathVariable String lastname){
+        List<Student> list =  studentService.getByFirstNameOrLastName(firstName,lastname);
+        return new ResponseEntity<>(list.toString(),HttpStatus.ACCEPTED);
+    }
 
     private Student setStudent(JSONObject jsonObject) {
         Student student=new Student();
