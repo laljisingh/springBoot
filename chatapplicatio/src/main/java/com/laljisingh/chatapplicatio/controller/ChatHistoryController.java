@@ -11,10 +11,8 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.lang.Nullable;
+import org.springframework.web.bind.annotation.*;
 
 import java.sql.Timestamp;
 import java.util.Optional;
@@ -47,6 +45,17 @@ public class ChatHistoryController {
 
     }
 
+    @GetMapping("/get-message")
+    public ResponseEntity<String> getMessageById(@Nullable @RequestParam int senderId){
+        JSONObject responce = chatService.getMessage(senderId);
+        return new ResponseEntity<String>(responce.toString(), HttpStatus.OK);
+    }
+
+    @GetMapping("/get/conversation")
+    public ResponseEntity<String> getCOnversationOfTwoUser(@RequestParam int senderId,@RequestParam int receiverId){
+        JSONObject responce = chatService.getConversation(senderId, receiverId);
+        return new ResponseEntity<String>(responce.toString(), HttpStatus.OK);
+    }
     private ChatHistory setChatHistory(JSONObject request) {
         ChatHistory chat = new ChatHistory();
         chat.setMessage(request.getString("message"));
